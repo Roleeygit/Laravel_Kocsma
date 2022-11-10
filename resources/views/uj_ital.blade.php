@@ -1,4 +1,5 @@
 <a href="/kocsmaadat"><button>Adatok</button></a>
+<a href="/frissit-kocsma"><button>Frissítetta adatok</button></a>
 
 
 @if(session()->has("success"))

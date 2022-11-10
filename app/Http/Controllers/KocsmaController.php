@@ -46,7 +46,17 @@ class KocsmaController extends Controller
         }
     }
 
-    public function frissitKocsma(Request $request){
+    public function ujkocsma(Request $request){
+        $nev = $request->nev;
+
+        $kocsmas = Kocsma::with("type")->where("nev",$nev)->first();
+        return view("/frissit_kocsma",[
+            "kocsma"=> $kocsmas
+        ]);
+    }
+
+    public function frissitkocsma(Request $request)
+    {
 
         $type = $request->type;
         $types = Type::where("nev",$type)->get();
@@ -55,21 +65,22 @@ class KocsmaController extends Controller
             $type_id = $type->id;
 
 
-        $student = Student::where("name",$request->name)->first();
+        $kocsma = Kocsma::where("nev",$request->nev)->first();
 
-        $student ->name = $request->name;
-        $student-> email = $request->email;
-        $student-> course_id = $course_id;
+        $kocsma -> nev = $request->nev;
+        $kocsma -> ar = $request->ar;
+        $kocsma -> type_id = $type_id;
 
-        $student->save();
+        $kocsma->save();
         return redirect("/");
     }
 
-    public function destroy(Request $request){
+    public function torolkocsma(Request $request)
+    {
 
-        $student = Student::where("name",$request->name)->first();
-        $id = $student->id;
-        $student->delete($id);
+        $kocsma = Kocsma::where("nev",$request->nev)->first();
+        $id = $kocsma->id;
+        $kocsma->delete($id);
         return redirect("/");
     }
 

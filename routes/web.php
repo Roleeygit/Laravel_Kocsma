@@ -21,3 +21,6 @@ Route::get('/', function () {
 Route::get('/uj-ital', [KocsmaController::class, 'ujital']);
 Route::post('/veglegesit-ital', [KocsmaController::class, 'veglegesitital']);
 Route::get('/kocsmaadat', [KocsmaController::class, 'kocsmaadat']);
+Route::get('/mutat-frissit', [KocsmaController::class, 'ujkocsma']);
+Route::post('/frissit-kocsma', [KocsmaController::class, 'frissitkocsma']);
+Route::get('/torol-kocsma', [KocsmaController::class, 'torolkocsma']);
