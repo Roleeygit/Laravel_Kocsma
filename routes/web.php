@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\KocsmaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/uj-ital', [KocsmaController::class, 'ujital']);
+Route::post('/veglegesit-ital', [KocsmaController::class, 'veglegesitital']);
+Route::get('/kocsmaadat', [KocsmaController::class, 'kocsmaadat']);
